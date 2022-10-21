@@ -1,0 +1,18 @@
+<%- include("header") -%>
+
+<div class="wrapper">
+  <h1 class=""><%= title %> things ToDo</h1>
+  <ul>
+    <% items.forEach(item => { %>
+        <li><input class="checkbox" type="checkbox"><span><%= item %></span><button type="button">-</button></li>
+    <%  }) %>
+    <li>
+      <form action="/" method="post">
+        <input autocomplete="off" autofocus type="text" name="item" onfocusout="this.placeholder='New chore'" onfocus="this.placeholder=''">
+        <button type="submit" value=<%= listName %> name="list">+</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<%- include("footer") -%>
