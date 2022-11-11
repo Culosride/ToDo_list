@@ -4,7 +4,7 @@
   <h1 class=""><%= title %> things ToDo</h1>
   <ul>
     <% items.forEach(item => { %>
-        <li><input class="checkbox" type="checkbox"><span><%= item %></span><button type="button">-</button></li>
+        <li><input class="checkbox" type="checkbox"><span><%= item.name %></span><button type="button">-</button></li>
     <%  }) %>
     <li>
       <form action="/" method="post">
