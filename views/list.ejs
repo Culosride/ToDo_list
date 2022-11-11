@@ -4,10 +4,16 @@
   <h1 class=""><%= title %> things ToDo</h1>
   <ul>
     <% items.forEach(item => { %>
-        <li><input class="checkbox" type="checkbox"><span><%= item.name %></span><button type="button">-</button></li>
+        <form action="/delete" method="post">
+          <li>
+            <input class="checkbox" name="checkbox" value=<%= item.id %> onChange="this.form.submit()" type="checkbox">
+              <span><%= item.name %></span>
+              <button type="button">-</button>
+          </li>
+        </form>
     <%  }) %>
     <li>
-      <form action="/" method="post">
+      <form class="item" action="/" method="post">
         <input autocomplete="off" autofocus type="text" name="item" onfocusout="this.placeholder='New chore'" onfocus="this.placeholder=''">
         <button type="submit" value=<%= listName %> name="list">+</button>
       </form>
