@@ -27,10 +27,7 @@ const itemsSchema = new mongoose.Schema({
 
 const Item = mongoose.model('Item', itemsSchema);
 
-
-const workList = [];
 const today = day();
-
 
 // regex to check if new entry is only white space or empty string
 const regex = new RegExp("^$|^[ \t]+$");
@@ -48,40 +45,26 @@ app.post("/", (req, res) => {
   const newItem = new Item({
     name: item
   })
-  newItem.save()
-  res.redirect("/")
-  const list = req.body.list
-
-  // if(regex.test(item)) {
-  //   res.redirect(path.join("/", list==="work" ? list : ""))
-  // } else {
-  //   if(list === "work") {
-  //     workList.push(item)
-  //     res.redirect("/work")
-  //   } else {
-  //     newItem.save()
-  //     res.redirect("/")
-  //   }
-  // }
+  if(regex.test(item)) {
+    res.redirect("/")
+  } else {
+      newItem.save()
+      res.redirect("/")
+  }
 })
 
 app.post("/delete", (req, res) => {
-  const id = req.body.checkbox
+  const id = req.body.delete
   Item.findByIdAndRemove(id, (err) => {
     err
       ? console.log(err)
       : console.log("Item deleted")
   });
   res.redirect("/")
-
 })
 
 app.get("/about", (req, res) => {
   res.render("about");
-})
-
-app.get("/work", (req, res) => {
-  res.render("list", {title: "Work", listName: "work", items: workList});
 })
 
 app.listen(3000);
