@@ -6,7 +6,6 @@
     <% items.forEach(item => { %>
         <form action="/delete" method="post">
           <li>
-            <!-- <input class="checkbox" name="checkbox" value="<%= item.id %> onChange="this.form.submit()" type="checkbox"> -->
               <span><%= item.name %></span>
               <button value=<%= item.id %> name="delete" type="submit">-</button>
               <input type="hidden" name="listName" value=<%= title %>></input>

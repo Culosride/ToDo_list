@@ -109,15 +109,6 @@ app.post("/delete", (req, res) => {
       if(!err) res.redirect(path.join("/", list))
     })
   }
-
-  // Item.findByIdAndRemove(id, (err) => {
-  //   List.findOne({id : id}, (err, foundList) => {
-  //     res.redirect(path.join("/", foundList.name))
-  //   })
-  //   err
-  //     ? console.log(err)
-  //     : console.log("Item deleted")
-  // });
 })
 
 
