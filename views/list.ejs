@@ -1,14 +1,15 @@
 <%- include("header") -%>
 
 <div class="wrapper">
-  <h1 class=""><%= title %> things ToDo</h1>
+  <h1 class=""><%= title.charAt(0).toUpperCase() + title.slice(1) %> things ToDo</h1>
   <ul>
     <% items.forEach(item => { %>
         <form action="/delete" method="post">
           <li>
-            <!-- <input class="checkbox" name="checkbox" value=<%= item.id %> onChange="this.form.submit()" type="checkbox"> -->
+            <!-- <input class="checkbox" name="checkbox" value="<%= item.id %> onChange="this.form.submit()" type="checkbox"> -->
               <span><%= item.name %></span>
               <button value=<%= item.id %> name="delete" type="submit">-</button>
+              <input type="hidden" name="listName" value=<%= title %>></input>
           </li>
         </form>
     <%  }) %>
